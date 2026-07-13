@@ -40,7 +40,7 @@ This is what lets BioBridge reach a **broad, distributed science network on publ
 |------|-------------------|---------------|
 | **Nimble** | Live web = discovery + enrichment engine. Paste a Nimble key on the app → real-time search → qualify → custody-seal. Source-linked, no mocks. | `pipeline-app/lib/leads/discover.ts`, `scripts/run_gtm.py` |
 | **Kylon** | The agentic workspace the AI employee lives in, the host for the app, and the custody **data store** (TiDB). The whole dashboard runs on Kylon; agents operate the pipeline. | `pipeline-app/` (deployed app) |
-| **Butterbase** | **Model gateway** for Glasswork deterministic-core scoring: run one task across a model spread, pick the cheapest that passes the sealed golden root. (Butterbase = model gateway, *not* the custody store.) | `scripts/glasswork_score.py` |
+| **Butterbase** *(not a sponsor)* | Model gateway we used for Glasswork deterministic-core scoring — a quick decision: we had free-trial access and Glasswork was already hosted there. Run one task across a model spread, pick the cheapest that passes the sealed golden root. (Model gateway, *not* the custody store.) | `scripts/glasswork_score.py` |
 | **AgentOS / AgentHog** | Tracing & evals. Every agent run and Nimble tool call is a traced span; judges open the public share link. | `scripts/agenthog_setup.py`, `scripts/quickstart_agent.py` |
 | **Glasswork / FCG** | The custody + deterministic-audit backbone. Tokenized private fields, hash-chained access log, per-agent Merkle roots, recompute-or-reject. | `scripts/fcg.py`, `pipeline-app/lib/leads/custody-chain.ts` |
 
@@ -71,6 +71,11 @@ The graph and its stats are **viewable**, but private contact data stays **vault
 - The live app's lead **table/calendar** show a curated 9-lead demo; the **860/221/304** graph is the full custody store (shown as stat cards + in the demo video).
 - People/companies/vaulted stat cards are synced constants; the **custody-events counter and public hash are genuinely live** and climb on each unlock. Live-mutating people/company counts need a server-side key to the graph app — a planned addition.
 - Live Nimble/Butterbase calls from the *hosted* app require a runtime key (a Kylon deployment can't hold custom env today); the app degrades gracefully to sealed results, and judges can paste their own key.
+
+## Citations
+
+- Lee, B. (2026). *Fractal Custody Objects: route-comparable chain-of-custody for deterministic computational biology and AI-agent provenance.* Zenodo. https://doi.org/10.5281/zenodo.21210575
+- Glasswork — deterministic-audit method (hosted on Butterbase). https://glasswork.butterbase.dev/
 
 ## License
 
