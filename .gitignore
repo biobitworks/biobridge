@@ -8,3 +8,7 @@ build/
 __pycache__/
 *.pyc
 .venv/
+pipeline-app/node_modules/
+pipeline-app/.next/
+pipeline-app/.env
+pipeline-app/.env.local

@@ -1,0 +1,343 @@
+{
+  "runtime_kind": "custom_app",
+  "manifest": {
+    "schema_version": "kylon.app_manifest.v1",
+    "app": {
+      "id": "75f37c030c1f",
+      "name": "BioBridge Pipeline",
+      "version": "1.0.0",
+      "base_url": "https://biobridge-pipeline.kylon.app",
+      "template_id": "data-app",
+      "template_version": "1.1.0"
+    },
+    "data": {
+      "entities": [
+        {
+          "id": "leads",
+          "label": "Leads",
+          "description": "Leads records.",
+          "record_id_field": "id",
+          "title_field": "org_name",
+          "fields": [
+            {
+              "id": "id",
+              "label": "ID",
+              "type": "text",
+              "system": true
+            },
+            {
+              "id": "org_name",
+              "label": "Organization",
+              "type": "text",
+              "required": true
+            },
+            {
+              "id": "org_type",
+              "label": "Type",
+              "type": "select",
+              "config": {
+                "options": [
+                  {
+                    "id": "cro",
+                    "color": "blue",
+                    "label": "CRO"
+                  },
+                  {
+                    "id": "academic",
+                    "color": "green",
+                    "label": "Academic lab"
+                  },
+                  {
+                    "id": "biotech",
+                    "color": "purple",
+                    "label": "Biotech"
+                  },
+                  {
+                    "id": "core_facility",
+                    "color": "teal",
+                    "label": "Core facility"
+                  },
+                  {
+                    "id": "institute",
+                    "color": "indigo",
+                    "label": "Research institute"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "country",
+              "label": "Country",
+              "type": "text"
+            },
+            {
+              "id": "city",
+              "label": "City",
+              "type": "text"
+            },
+            {
+              "id": "website",
+              "label": "Website",
+              "type": "url"
+            },
+            {
+              "id": "capabilities",
+              "label": "Capabilities",
+              "type": "text"
+            },
+            {
+              "id": "protocol_match",
+              "label": "Protocol match",
+              "type": "select",
+              "config": {
+                "options": [
+                  {
+                    "id": "strong",
+                    "color": "green",
+                    "label": "Strong"
+                  },
+                  {
+                    "id": "partial",
+                    "color": "yellow",
+                    "label": "Partial"
+                  },
+                  {
+                    "id": "weak",
+                    "color": "rose",
+                    "label": "Weak"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "regulatory_status",
+              "label": "Regulatory fit",
+              "type": "select",
+              "config": {
+                "options": [
+                  {
+                    "id": "permitted",
+                    "color": "green",
+                    "label": "Permitted"
+                  },
+                  {
+                    "id": "restricted",
+                    "color": "yellow",
+                    "label": "Restricted"
+                  },
+                  {
+                    "id": "prohibited",
+                    "color": "rose",
+                    "label": "Prohibited"
+                  },
+                  {
+                    "id": "unknown",
+                    "color": "gray",
+                    "label": "Unknown"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "regulatory_notes",
+              "label": "Regulatory notes",
+              "type": "text"
+            },
+            {
+              "id": "fit_score",
+              "label": "Fit score",
+              "type": "number"
+            },
+            {
+              "id": "stage",
+              "label": "Stage",
+              "type": "select",
+              "config": {
+                "options": [
+                  {
+                    "id": "discovered",
+                    "color": "gray",
+                    "label": "Discovered"
+                  },
+                  {
+                    "id": "researched",
+                    "color": "cyan",
+                    "label": "Researched"
+                  },
+                  {
+                    "id": "qualified",
+                    "color": "blue",
+                    "label": "Qualified"
+                  },
+                  {
+                    "id": "drafted",
+                    "color": "indigo",
+                    "label": "Outreach drafted"
+                  },
+                  {
+                    "id": "sent",
+                    "color": "green",
+                    "label": "Sent"
+                  },
+                  {
+                    "id": "replied",
+                    "color": "pink",
+                    "label": "Replied"
+                  },
+                  {
+                    "id": "disqualified",
+                    "color": "rose",
+                    "label": "Disqualified"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "contact_name",
+              "label": "Contact",
+              "type": "text"
+            },
+            {
+              "id": "contact_title",
+              "label": "Contact title",
+              "type": "text"
+            },
+            {
+              "id": "contact_email",
+              "label": "Contact email",
+              "type": "email"
+            },
+            {
+              "id": "outreach_draft",
+              "label": "Outreach draft",
+              "type": "text"
+            },
+            {
+              "id": "research_summary",
+              "label": "Research summary",
+              "type": "text"
+            },
+            {
+              "id": "source_url",
+              "label": "Source",
+              "type": "url"
+            },
+            {
+              "id": "created_at",
+              "label": "Created",
+              "type": "date",
+              "system": true,
+              "config": {
+                "include_time": true
+              }
+            },
+            {
+              "id": "updated_at",
+              "label": "Updated",
+              "type": "date",
+              "system": true,
+              "config": {
+                "include_time": true
+              }
+            }
+          ],
+          "relationships": []
+        }
+      ]
+    }
+  },
+  "data_model": {
+    "schema_version": "kylon.app_data_model.v1",
+    "entities": [
+      {
+        "id": "leads",
+        "table": "leads",
+        "id_column": "id",
+        "created_at_column": "created_at",
+        "updated_at_column": "updated_at",
+        "fields": [
+          {
+            "id": "id",
+            "column": "id"
+          },
+          {
+            "id": "org_name",
+            "column": "org_name"
+          },
+          {
+            "id": "org_type",
+            "column": "org_type"
+          },
+          {
+            "id": "country",
+            "column": "country"
+          },
+          {
+            "id": "city",
+            "column": "city"
+          },
+          {
+            "id": "website",
+            "column": "website"
+          },
+          {
+            "id": "capabilities",
+            "column": "capabilities"
+          },
+          {
+            "id": "protocol_match",
+            "column": "protocol_match"
+          },
+          {
+            "id": "regulatory_status",
+            "column": "regulatory_status"
+          },
+          {
+            "id": "regulatory_notes",
+            "column": "regulatory_notes"
+          },
+          {
+            "id": "fit_score",
+            "column": "fit_score"
+          },
+          {
+            "id": "stage",
+            "column": "stage"
+          },
+          {
+            "id": "contact_name",
+            "column": "contact_name"
+          },
+          {
+            "id": "contact_title",
+            "column": "contact_title"
+          },
+          {
+            "id": "contact_email",
+            "column": "contact_email"
+          },
+          {
+            "id": "outreach_draft",
+            "column": "outreach_draft"
+          },
+          {
+            "id": "research_summary",
+            "column": "research_summary"
+          },
+          {
+            "id": "source_url",
+            "column": "source_url"
+          },
+          {
+            "id": "created_at",
+            "column": "created_at"
+          },
+          {
+            "id": "updated_at",
+            "column": "updated_at"
+          }
+        ]
+      }
+    ]
+  }
+}

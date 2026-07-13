@@ -1,0 +1,246 @@
+{
+  "schema_version": "kylon.app_manifest.v1",
+  "app": {
+    "id": "75f37c030c1f",
+    "name": "BioBridge Pipeline",
+    "version": "1.0.0",
+    "base_url": "https://biobridge-pipeline.kylon.app",
+    "template_id": "data-app",
+    "template_version": "1.1.0"
+  },
+  "data": {
+    "entities": [
+      {
+        "id": "leads",
+        "label": "Leads",
+        "description": "Leads records.",
+        "record_id_field": "id",
+        "title_field": "org_name",
+        "fields": [
+          {
+            "id": "id",
+            "label": "ID",
+            "type": "text",
+            "system": true
+          },
+          {
+            "id": "org_name",
+            "label": "Organization",
+            "type": "text",
+            "required": true
+          },
+          {
+            "id": "org_type",
+            "label": "Type",
+            "type": "select",
+            "config": {
+              "options": [
+                {
+                  "id": "cro",
+                  "color": "blue",
+                  "label": "CRO"
+                },
+                {
+                  "id": "academic",
+                  "color": "green",
+                  "label": "Academic lab"
+                },
+                {
+                  "id": "biotech",
+                  "color": "purple",
+                  "label": "Biotech"
+                },
+                {
+                  "id": "core_facility",
+                  "color": "teal",
+                  "label": "Core facility"
+                },
+                {
+                  "id": "institute",
+                  "color": "indigo",
+                  "label": "Research institute"
+                }
+              ]
+            }
+          },
+          {
+            "id": "country",
+            "label": "Country",
+            "type": "text"
+          },
+          {
+            "id": "city",
+            "label": "City",
+            "type": "text"
+          },
+          {
+            "id": "website",
+            "label": "Website",
+            "type": "url"
+          },
+          {
+            "id": "capabilities",
+            "label": "Capabilities",
+            "type": "text"
+          },
+          {
+            "id": "protocol_match",
+            "label": "Protocol match",
+            "type": "select",
+            "config": {
+              "options": [
+                {
+                  "id": "strong",
+                  "color": "green",
+                  "label": "Strong"
+                },
+                {
+                  "id": "partial",
+                  "color": "yellow",
+                  "label": "Partial"
+                },
+                {
+                  "id": "weak",
+                  "color": "rose",
+                  "label": "Weak"
+                }
+              ]
+            }
+          },
+          {
+            "id": "regulatory_status",
+            "label": "Regulatory fit",
+            "type": "select",
+            "config": {
+              "options": [
+                {
+                  "id": "permitted",
+                  "color": "green",
+                  "label": "Permitted"
+                },
+                {
+                  "id": "restricted",
+                  "color": "yellow",
+                  "label": "Restricted"
+                },
+                {
+                  "id": "prohibited",
+                  "color": "rose",
+                  "label": "Prohibited"
+                },
+                {
+                  "id": "unknown",
+                  "color": "gray",
+                  "label": "Unknown"
+                }
+              ]
+            }
+          },
+          {
+            "id": "regulatory_notes",
+            "label": "Regulatory notes",
+            "type": "text"
+          },
+          {
+            "id": "fit_score",
+            "label": "Fit score",
+            "type": "number"
+          },
+          {
+            "id": "stage",
+            "label": "Stage",
+            "type": "select",
+            "config": {
+              "options": [
+                {
+                  "id": "discovered",
+                  "color": "gray",
+                  "label": "Discovered"
+                },
+                {
+                  "id": "researched",
+                  "color": "cyan",
+                  "label": "Researched"
+                },
+                {
+                  "id": "qualified",
+                  "color": "blue",
+                  "label": "Qualified"
+                },
+                {
+                  "id": "drafted",
+                  "color": "indigo",
+                  "label": "Outreach drafted"
+                },
+                {
+                  "id": "sent",
+                  "color": "green",
+                  "label": "Sent"
+                },
+                {
+                  "id": "replied",
+                  "color": "pink",
+                  "label": "Replied"
+                },
+                {
+                  "id": "disqualified",
+                  "color": "rose",
+                  "label": "Disqualified"
+                }
+              ]
+            }
+          },
+          {
+            "id": "contact_name",
+            "label": "Contact",
+            "type": "text"
+          },
+          {
+            "id": "contact_title",
+            "label": "Contact title",
+            "type": "text"
+          },
+          {
+            "id": "contact_email",
+            "label": "Contact email",
+            "type": "email"
+          },
+          {
+            "id": "outreach_draft",
+            "label": "Outreach draft",
+            "type": "text"
+          },
+          {
+            "id": "research_summary",
+            "label": "Research summary",
+            "type": "text"
+          },
+          {
+            "id": "source_url",
+            "label": "Source",
+            "type": "url"
+          },
+          {
+            "id": "created_at",
+            "label": "Created",
+            "type": "date",
+            "system": true,
+            "config": {
+              "include_time": true
+            }
+          },
+          {
+            "id": "updated_at",
+            "label": "Updated",
+            "type": "date",
+            "system": true,
+            "config": {
+              "include_time": true
+            }
+          }
+        ],
+        "relationships": []
+      }
+    ]
+  }
+}

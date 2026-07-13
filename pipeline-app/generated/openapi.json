@@ -1,0 +1,373 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "BioBridge Pipeline",
+    "version": "1.0.0",
+    "description": "BioBridge Pipeline custom App upgraded from an existing database App."
+  },
+  "paths": {
+    "/api/openapi.json": {
+      "get": {
+        "summary": "Get OpenAPI document",
+        "description": "Use as the source of truth for every App-owned API operation the App UI or an agent can call. Data Viewer uses App registration instead.",
+        "responses": {
+          "200": {
+            "description": "OpenAPI document generated from lib/app-definition/definition.ts."
+          }
+        }
+      }
+    },
+    "/api/kylon/workspace-members": {
+      "get": {
+        "summary": "List workspace members",
+        "description": "Use to resolve Kylon workspace user ids into display profiles for user and multi-user fields. The route calls Kylon server-side and never exposes workspace API credentials to the browser.",
+        "responses": {
+          "200": {
+            "description": "Normalized workspace member profiles. If workspace credentials are unavailable, returns an empty members array.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WorkspaceMembersResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "WorkspaceMemberProfile": {
+        "type": "object",
+        "properties": {
+          "userId": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string",
+            "format": "email"
+          },
+          "avatarUrl": {
+            "type": "string",
+            "format": "uri"
+          },
+          "memberType": {
+            "type": "string"
+          },
+          "role": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "userId",
+          "name"
+        ],
+        "additionalProperties": false
+      },
+      "WorkspaceMembersResponse": {
+        "type": "object",
+        "properties": {
+          "members": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/WorkspaceMemberProfile"
+            }
+          }
+        },
+        "required": [
+          "members"
+        ],
+        "additionalProperties": false
+      },
+      "Pagination": {
+        "type": "object",
+        "properties": {
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 500
+          },
+          "next_cursor": {
+            "type": "string"
+          },
+          "has_more": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "limit",
+          "has_more"
+        ],
+        "additionalProperties": false
+      },
+      "AppRecordResponse": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/leadsRecordResponse"
+          }
+        ]
+      },
+      "leadsRecordData": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "org_name": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "org_type": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "country": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "city": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "website": {
+            "oneOf": [
+              {
+                "type": "string",
+                "format": "uri"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "capabilities": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "protocol_match": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "regulatory_status": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "regulatory_notes": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "fit_score": {
+            "oneOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "stage": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "contact_name": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "contact_title": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "contact_email": {
+            "oneOf": [
+              {
+                "type": "string",
+                "format": "email"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "outreach_draft": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "research_summary": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "source_url": {
+            "oneOf": [
+              {
+                "type": "string",
+                "format": "uri"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "created_at": {
+            "oneOf": [
+              {
+                "type": "string",
+                "format": "date"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "updated_at": {
+            "oneOf": [
+              {
+                "type": "string",
+                "format": "date"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "org_name",
+          "org_type",
+          "country",
+          "city",
+          "website",
+          "capabilities",
+          "protocol_match",
+          "regulatory_status",
+          "regulatory_notes",
+          "fit_score",
+          "stage",
+          "contact_name",
+          "contact_title",
+          "contact_email",
+          "outreach_draft",
+          "research_summary",
+          "source_url",
+          "created_at",
+          "updated_at"
+        ],
+        "additionalProperties": false
+      },
+      "leadsRecordResponse": {
+        "type": "object",
+        "properties": {
+          "entity_id": {
+            "type": "string",
+            "enum": [
+              "leads"
+            ]
+          },
+          "record_id": {
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/leadsRecordData"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "entity_id",
+          "record_id",
+          "data"
+        ],
+        "additionalProperties": false
+      }
+    }
+  }
+}

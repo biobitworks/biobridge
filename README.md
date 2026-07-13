@@ -19,3 +19,6 @@ This reveals a **curated demo** of contacts (fake `example.*` emails — real ad
 - **AgentOS trace (evals):** https://app.theagentos.space/share/Ld_bBWEUNgnT9KWodMk6FHK62elb5oqj6BWvu13h43Y
 - **Fractal Custody Objects (paper):** https://doi.org/10.5281/zenodo.21210575
 - **Glasswork:** https://glasswork.butterbase.dev/
+
+## App source
+The deployed dashboard app (Board, judge unlock, custody stats, how-to) lives in [`pipeline-app/`](./pipeline-app). Live at https://biobridge-pipeline.kylon.app
