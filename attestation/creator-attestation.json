@@ -1,0 +1,11 @@
+{
+  "attestation": "final-demo build authored by agent",
+  "agent": "Vito",
+  "agent_id": "95e4d01ed146",
+  "agent_email": "agent+95e4d01ed146@kylon.io",
+  "artifact": "BioBridge final-demo cut",
+  "recorded_after_cutoff": true,
+  "chain_head_at_attestation": "d6510fbafdf1bb76bb1386f468f9555022f728c9588b76e36d4c9659645d2c7e",
+  "ts": "2026-07-13T17:14:00-07:00",
+  "creator_hash": "d0adbd846c6bda6789d53252212a298299fd66f307342b9e0d6ed3bf2396110f"
+}
