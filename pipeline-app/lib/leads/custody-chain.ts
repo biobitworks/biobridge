@@ -2,6 +2,7 @@ import "server-only";
 
 import { createHash } from "node:crypto";
 import { executeQuery, hasDatabaseConnection, queryRows } from "@/lib/db";
+import { isExampleMode } from "@/lib/mode";
 import type { RowDataPacket } from "mysql2";
 
 /**
@@ -147,7 +148,7 @@ export async function appendGrant(opts: GrantOptions = {}): Promise<GrantResult>
   const actor = `${actorType}:${actorId}`;
 
   let appended = false;
-  if (hasDatabaseConnection()) {
+  if (hasDatabaseConnection() && !isExampleMode()) {
     try {
       await executeQuery(
         `INSERT INTO access_log

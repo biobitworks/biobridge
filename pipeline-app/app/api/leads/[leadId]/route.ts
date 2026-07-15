@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { isExampleMode } from "@/lib/mode";
 import {
   deleteLead,
   getLead,
@@ -25,6 +26,12 @@ export async function PATCH(
   context: { params: Promise<{ leadId: string }> },
 ) {
   const { leadId } = await context.params;
+  if (isExampleMode()) {
+    return NextResponse.json(
+      { error: "BioBridge is a frozen example. Edits are disabled — nothing is persisted." },
+      { status: 405 },
+    );
+  }
   const body = (await request.json().catch(() => null)) as { data?: unknown } | null;
   if (!body || typeof body.data !== "object" || body.data == null || Array.isArray(body.data)) {
     return NextResponse.json({ error: "Expected request body with object data." }, { status: 400 });
@@ -43,6 +50,12 @@ export async function DELETE(
   context: { params: Promise<{ leadId: string }> },
 ) {
   const { leadId } = await context.params;
+  if (isExampleMode()) {
+    return NextResponse.json(
+      { error: "BioBridge is a frozen example. Edits are disabled — nothing is persisted." },
+      { status: 405 },
+    );
+  }
   const deleted = await deleteLead(leadId);
   if (!deleted) {
     return NextResponse.json({ error: "Lead not found" }, { status: 404 });
